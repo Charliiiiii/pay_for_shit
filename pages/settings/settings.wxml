@@ -1,0 +1,21 @@
+<view class="page">
+  <cute-sky compact="{{true}}" />
+  <view class="card">
+    <text class="label">月薪（元）</text>
+    <input class="input" type="digit" placeholder="例如 8000" value="{{salaryInput}}" bindinput="onSalaryInput" />
+    <text class="label label--spaced">每日工时（小时）</text>
+    <text class="hint">时薪 = 月薪 ÷ 21.75 天 ÷ 每日工时；常见 8，支持小数如 7.5</text>
+    <input class="input" type="digit" placeholder="例如 8" value="{{hoursInput}}" bindinput="onHoursInput" />
+    <text class="preview" wx:if="{{hourlyPreview > 0}}">当前估算时薪：¥ {{hourlyPreview}} / 小时</text>
+    <button class="btn-save" bindtap="onSave">保存</button>
+  </view>
+
+  <view class="card">
+    <button class="btn-danger" bindtap="onClearRecords">清空所有记录</button>
+    <text class="label-paren label-paren-right">（仅清空记录，月薪设置保留）</text>
+  </view>
+
+  <view class="card">
+    <button class="btn-share" open-type="share">分享小程序</button>
+  </view>
+</view>

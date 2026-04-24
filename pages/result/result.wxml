@@ -1,0 +1,34 @@
+<view class="page" wx:if="{{session}}">
+  <cute-sky />
+  <text class="celebrate">🎉恭喜🎉</text>
+  <text class="headline">本次收益</text>
+  <view class="money-box">
+    <text class="money">{{session.earnedDisplay}}¥</text>
+  </view>
+   <view class="money-box">
+    <text class="duration">蹲了：</text>
+    <text class="money">{{session.durationText}}</text>
+  </view>
+  
+
+  <view class="panel">
+    <view class="row">今日累计：<text class="gold">¥ {{session.todayTotal}}</text></view>
+    <view class="row">本周累计：<text class="gold">¥ {{session.weekTotal}}</text></view>
+    <view class="row">本月预估：<text class="gold">¥ {{session.monthEstimate}}</text></view>
+    <view class="row dim">按此节奏，一年约白嫖：<text class="gold">¥ {{session.yearFromPace}}</text></view>
+  </view>
+
+  <view class="quote">「{{session.quote}}」</view>
+
+  <view class="actions">
+    <button class="btn-ok" bindtap="onOk">OK</button>
+    <button class="btn-share" bindtap="onShareImage">分享截图</button>
+  </view>
+
+  <canvas type="2d" id="shareCanvas" class="hidden-canvas"></canvas>
+</view>
+
+<view wx:else class="empty">
+  <text>没有会话数据，返回首页再试一次～</text>
+  <button class="btn-ok" bindtap="onOk">回首页</button>
+</view>

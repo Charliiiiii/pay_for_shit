@@ -1,0 +1,40 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/calendar/calendar",
+    "pages/rank/rank",
+    "pages/result/result",
+    "pages/settings/settings",
+    "pages/history/history"
+  ],
+  "window": {
+    "navigationBarTitleText": "带薪噗噗计时器",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#e3f4ff",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#7896c4",
+    "selectedColor": "#1565c0",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "计时"
+      },
+      {
+        "pagePath": "pages/calendar/calendar",
+        "text": "噗噗日历"
+      },
+      {
+        "pagePath": "pages/rank/rank",
+        "text": "噗噗排行榜"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

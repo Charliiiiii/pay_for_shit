@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "设置",
+  "usingComponents": {
+    "cute-sky": "/components/cute-sky/cute-sky"
+  }
+}

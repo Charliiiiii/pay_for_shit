@@ -1,0 +1,33 @@
+<view class="page">
+  <view class="month-bar">
+    <view class="nav-btn" bindtap="onPrevMonth">‹</view>
+    <text class="month-title">{{year}}年{{month}}月</text>
+    <view class="nav-btn" bindtap="onNextMonth">›</view>
+  </view>
+
+  <view class="week-head">
+    <text wx:for="{{weekLabels}}" wx:key="*this" class="wh">{{item}}</text>
+  </view>
+
+  <view class="grid">
+    <view wx:for="{{weeks}}" wx:for-item="wk" wx:for-index="wi" wx:key="wi" class="week-row">
+      <view
+        wx:for="{{wk}}"
+        wx:for-item="cell"
+        wx:for-index="ci"
+        wx:key="cellKey"
+        class="cell {{cell.type === 'pad' ? 'cell--pad' : ''}} {{cell.count ? 'cell--has' : ''}}"
+      >
+        <block wx:if="{{cell.type === 'day'}}">
+          <text class="day-num">{{cell.d}}</text>
+          <view wx:if="{{cell.count}}" class="poop-wrap">
+            <text wx:for="{{cell.poopArray}}" wx:for-item="p" wx:for-index="pi" wx:key="pi" class="poop">{{p}}</text>
+            <text wx:if="{{cell.overflow > 0}}" class="overflow">+{{cell.overflow}}</text>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+
+  <view class="hint">有记录的日子会显示对应次数的 💩（单日最多画 14 个，超出用 +n）</view>
+</view>

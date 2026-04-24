@@ -1,0 +1,26 @@
+<view class="page">
+  <view class="seg">
+    <view class="seg-item seg-item--on" bindtap="onScopeAll">全部用户</view>
+    <view class="seg-item seg-item--off" bindtap="onScopeFriends">好友</view>
+  </view>
+
+  <view class="list">
+    <view
+      wx:for="{{rows}}"
+      wx:key="id"
+      class="row {{item.isMe ? 'row--me' : ''}}"
+    >
+      <text class="rank">{{item.rank}}</text>
+      <view class="mid">
+        <text class="name">{{item.name}}</text>
+        <text class="sub">本周 {{item.sessions}} 次噗噗</text>
+      </view>
+      <view class="right">
+        <text class="amt">¥{{item.weeklyDisplay}}</text>
+        <text class="sub">本周摸金</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="foot">排行含演示数据；真实数据仅「我（本机）」来自本设备记录。</view>
+</view>

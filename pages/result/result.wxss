@@ -1,0 +1,122 @@
+.page {
+  padding: 32rpx 36rpx 80rpx;
+  text-align: center;
+}
+
+.celebrate {
+  font-size: 48rpx;
+  display: block;
+  margin-bottom: 12rpx;
+}
+
+.headline {
+  font-size: 30rpx;
+  color: #5c8bc9;
+}
+
+.money-box {
+  padding: 20rpx 24rpx;
+  border-radius: 28rpx;
+  display: inline-flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 8rpx;
+}
+
+.currency {
+  font-size: 44rpx;
+  font-weight: 800;
+  color: #1976d2;
+}
+
+.money {
+  font-size: 70rpx;
+  font-weight: 900;
+  color: #0d47a1;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+}
+
+.duration {
+  font-size: 32rpx;
+  color: #1565c0;
+  margin-bottom: 36rpx;
+}
+
+.panel {
+  text-align: left;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 28rpx 32rpx;
+  margin-bottom: 36rpx;
+  border: 2rpx solid #bbdefb;
+}
+
+.row {
+  font-size: 28rpx;
+  margin-bottom: 16rpx;
+  color: #1565c0;
+}
+
+.row.dim {
+  font-size: 24rpx;
+  color: #7896c4;
+  margin-bottom: 0;
+}
+
+.gold {
+  color: #0d47a1;
+  font-weight: 700;
+}
+
+.quote {
+  font-size: 28rpx;
+  color: #1976d2;
+  line-height: 1.6;
+  margin-bottom: 48rpx;
+  padding: 0 16rpx;
+}
+
+.actions {
+  display: flex;
+  gap: 24rpx;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn-share {
+  flex: 1;
+  min-width: 280rpx;
+  background: #1e88e5;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 30rpx;
+  border-radius: 999rpx;
+  border: none;
+  padding: 24rpx 20rpx;
+}
+
+.btn-ok {
+  flex: 1;
+  min-width: 200rpx;
+  background: #ffffff;
+  color: #1976d2;
+  font-size: 28rpx;
+  border-radius: 999rpx;
+  border: 2rpx solid #90caf9;
+  padding: 24rpx 20rpx;
+}
+
+.hidden-canvas {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 540px;
+  height: 960px;
+}
+
+.empty {
+  padding: 120rpx 40rpx;
+  text-align: center;
+  color: #5c8bc9;
+}

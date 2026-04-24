@@ -1,0 +1,74 @@
+.page {
+  padding: 16rpx 24rpx 80rpx;
+}
+
+.empty {
+  text-align: center;
+  color: #7896c4;
+  padding: 120rpx 32rpx;
+  font-size: 28rpx;
+}
+
+.day-card {
+  background: #ffffff;
+  border-radius: 20rpx;
+  margin-bottom: 20rpx;
+  overflow: hidden;
+  border: 2rpx solid #bbdefb;
+  box-shadow: 0 6rpx 20rpx rgba(30, 136, 229, 0.08);
+}
+
+.day-head {
+  display: flex;
+  align-items: center;
+  padding: 28rpx 24rpx;
+  gap: 16rpx;
+}
+
+.day-date {
+  flex: 1;
+  font-size: 30rpx;
+  font-weight: 700;
+  color: #0d47a1;
+}
+
+.day-meta {
+  font-size: 26rpx;
+  color: #5c8bc9;
+}
+
+.chev {
+  font-size: 24rpx;
+  color: #42a5f5;
+  margin-left: 8rpx;
+}
+
+.day-body {
+  border-top: 2rpx solid #e3f2fd;
+  padding: 8rpx 0 16rpx;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  padding: 16rpx 24rpx;
+  font-size: 26rpx;
+  color: #1565c0;
+}
+
+.t {
+  width: 140rpx;
+  color: #90a4c4;
+}
+
+.d {
+  flex: 1;
+}
+
+.e {
+  font-weight: 700;
+}
+
+.gold {
+  color: #0d47a1;
+}

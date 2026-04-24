@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "噗噗记录",
+  "usingComponents": {
+    "cute-sky": "/components/cute-sky/cute-sky"
+  }
+}

@@ -1,0 +1,51 @@
+<view class="page">
+  <cute-sky />
+  <view class="hero">
+    <text class="title" wx:if="{{!isRunning}}">带薪💩计时器</text>
+    <text class="subtitle" wx:if="{{!isRunning}}">蹲下去的每一秒，都是赚到的。</text>
+  </view>
+
+  <view class="action-area">
+    <view wx:if="{{isRunning}}" class="timer-card pulse">
+      <view class="clock-row">
+        <view class="clock-icon-wrap" aria-hidden="true">
+          <text class="clock-icon">⏱</text>
+        </view>
+        <text class="clock-digits">{{displayClock}}</text>
+      </view>
+      <text class="running-label">正在噗噗…</text>
+      <text class="preview-earn gold-text">实时收益 ¥ {{previewEarn}}</text>
+      <text wx:if="{{durationSeconds >= 300}}" class="warn-tip">建议不超过 5 分钟，注意腿麻</text>
+    </view>
+    <button wx:else class="big-btn start" bindtap="onToggleTimer" hover-class="btn-hover">开始噗噗</button>
+  </view>
+
+  <view wx:if="{{isRunning}}" class="end-row">
+    <button class="btn-end" bindtap="onEndOnly" hover-class="btn-hover-light">结束噗噗</button>
+  </view>
+
+  <view wx:if="{{!isRunning}}" class="stats-block">
+    <text class="stats-title">今日战报</text>
+    <view class="stat-line">今日已赚 <text class="gold-text">¥ {{summary.todayTotal}}</text></view>
+    <view class="stat-line">本周已赚 <text class="gold-text">¥ {{summary.weekTotal}}</text></view>
+    <view class="divider"></view>
+    <view wx:if="{{lastRecord}}" class="last-record">
+      <text class="muted">上次 {{lastRecord.durationText}}</text>
+      <text class="muted">¥ {{lastRecord.earned}}</text>
+    </view>
+    <view wx:if="{{summary.bestRecord}}" class="best">
+      <text class="muted">历史最高 {{summary.bestRecord.durationText}} · ¥ {{summary.bestRecord.earned}}</text>
+    </view>
+  </view>
+
+  <view wx:if="{{!isRunning}}" class="footer-actions">
+    <button class="link-btn" bindtap="goSettings" hover-class="btn-hover-light">设置</button>
+    <button class="link-btn" bindtap="goHistory" hover-class="btn-hover-light">记录</button>
+  </view>
+
+  <view wx:if="{{isRunning}}" class="poop-rain" aria-hidden="true">
+    <view wx:for="{{poopRain}}" wx:key="id" class="poop-drop" style="{{item.style}}">
+      <text class="poop-emoji">💩</text>
+    </view>
+  </view>
+</view>

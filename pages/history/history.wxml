@@ -1,0 +1,21 @@
+<view class="page">
+  <cute-sky compact="{{true}}" />
+  <view wx:if="{{groups.length === 0}}" class="empty">还没有记录，去首页蹲一波～</view>
+
+  <block wx:for="{{groups}}" wx:key="date">
+    <view class="day-card">
+      <view class="day-head" data-idx="{{index}}" bindtap="onToggleDay">
+        <text class="day-date">{{item.date}}</text>
+        <text class="day-meta">{{item.count}} 次 · ¥ {{item.totalEarned}}</text>
+        <text class="chev">{{item.expanded ? '▼' : '▶'}}</text>
+      </view>
+      <view wx:if="{{item.expanded}}" class="day-body">
+        <view class="row" wx:for="{{item.items}}" wx:for-item="rec" wx:key="id">
+          <text class="t">{{rec.timeText}}</text>
+          <text class="d">{{rec.durationText}}</text>
+          <text class="e gold">¥ {{rec.earned}}</text>
+        </view>
+      </view>
+    </view>
+  </block>
+</view>

@@ -1,0 +1,280 @@
+.page {
+  position: relative;
+  z-index: 0;
+  padding: 24rpx 36rpx calc(140rpx + env(safe-area-inset-bottom));
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.hero {
+  text-align: center;
+  margin-bottom: 20rpx;
+}
+
+.action-area {
+  margin-bottom: 8rpx;
+}
+
+.btn-hover {
+  opacity: 0.92;
+  transform: scale(0.98);
+}
+
+.btn-hover-light {
+  opacity: 0.88;
+}
+
+.emoji-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12rpx;
+  margin-bottom: 12rpx;
+}
+
+.emoji-main {
+  font-size: 72rpx;
+  line-height: 1;
+}
+
+.emoji-side {
+  font-size: 44rpx;
+  line-height: 1;
+}
+
+.title {
+  font-size: 46rpx;
+  font-weight: 800;
+  color: #0d47a1;
+  letter-spacing: 2rpx;
+}
+
+.subtitle {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 26rpx;
+  color: #5c8bc9;
+}
+
+.timer-card {
+  position: relative;
+  background: #ffffff;
+  border-radius: 32rpx;
+  padding: 40rpx 28rpx 36rpx;
+  border: 3rpx solid #bbdefb;
+  text-align: center;
+  box-shadow: 0 12rpx 32rpx rgba(30, 136, 229, 0.12);
+}
+
+.timer-card.pulse {
+  animation: breathe 1.8s ease-in-out infinite;
+}
+
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+    box-shadow: 0 12rpx 32rpx rgba(30, 136, 229, 0.12);
+  }
+  50% {
+    transform: scale(1.01);
+    box-shadow: 0 16rpx 40rpx rgba(30, 136, 229, 0.22);
+  }
+}
+
+/* 计时行：图标 + 数字对齐 */
+.clock-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 10rpx;
+  margin-bottom: 12rpx;
+  padding: 4rpx 0;
+}
+
+.clock-icon-wrap {
+  flex-shrink: 0;
+  width: 72rpx;
+  height: 72rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.clock-icon {
+  font-size: 52rpx;
+  line-height: 1;
+}
+
+.clock-digits {
+  flex-shrink: 0;
+  font-size: 68rpx;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  color: #1976d2;
+  letter-spacing: 6rpx;
+  line-height: 72rpx;
+}
+
+.running-label {
+  display: block;
+  margin: 0 auto 10rpx;
+  padding: 0 16rpx;
+  font-size: 40rpx;
+  font-weight: 800;
+  color: #0d47a1;
+  letter-spacing: 3rpx;
+  line-height: 1.4;
+}
+
+.big-btn {
+  width: 100%;
+  padding: 36rpx 24rpx;
+  font-size: 36rpx;
+  font-weight: 800;
+  border-radius: 999rpx;
+  border: none;
+  line-height: 1.2;
+}
+
+.big-btn.start {
+  position: relative;
+  background: #1e88e5;
+  color: #ffffff;
+  border: none;
+  box-shadow: 0 12rpx 28rpx rgba(30, 136, 229, 0.28);
+}
+
+.big-btn.running {
+  background: #e3f2fd;
+  color: #0d47a1;
+  border: 3rpx solid #64b5f6;
+}
+
+.preview-earn {
+  display: block;
+  margin-top: 20rpx;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.warn-tip {
+  display: block;
+  margin-top: 16rpx;
+  font-size: 24rpx;
+  color: #ef6c00;
+}
+
+.end-row {
+  position: relative;
+  margin-top: 28rpx;
+  text-align: center;
+}
+
+.btn-end {
+  background: #ffffff;
+  color: #1976d2;
+  font-size: 28rpx;
+  border: 2rpx solid #90caf9;
+  border-radius: 999rpx;
+  padding: 16rpx 48rpx;
+}
+
+.stats-block {
+  margin-top: 32rpx;
+  padding: 28rpx 32rpx 32rpx;
+  background: #ffffff;
+  border-radius: 24rpx;
+  border: 2rpx solid #bbdefb;
+  box-shadow: 0 8rpx 24rpx rgba(30, 136, 229, 0.06);
+}
+
+.stats-title {
+  display: block;
+  font-size: 26rpx;
+  font-weight: 700;
+  color: #5c8bc9;
+  margin-bottom: 20rpx;
+  letter-spacing: 2rpx;
+}
+
+.stat-line {
+  font-size: 30rpx;
+  margin-bottom: 14rpx;
+  color: #1565c0;
+}
+
+.divider {
+  height: 2rpx;
+  background: #e3f2fd;
+  margin: 24rpx 0;
+}
+
+.last-record,
+.best {
+  display: flex;
+  flex-direction: column;
+  gap: 6rpx;
+}
+
+.muted {
+  font-size: 26rpx;
+  color: #7896c4;
+}
+
+.footer-actions {
+  margin-top: 36rpx;
+  display: flex;
+  justify-content: stretch;
+  gap: 24rpx;
+  padding: 0 4rpx;
+}
+
+.link-btn {
+  flex: 1;
+  background: #ffffff;
+  color: #1976d2;
+  font-size: 28rpx;
+  font-weight: 600;
+  border-radius: 999rpx;
+  padding: 22rpx 24rpx;
+  border: 2rpx solid #90caf9;
+  max-width: none;
+}
+
+/* 💩 雨：最顶层显示；pointer-events:none 让点击穿透到下方按钮 */
+.poop-rain {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.poop-drop {
+  position: absolute;
+  top: -100rpx;
+  animation-name: poop-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  line-height: 1;
+  will-change: transform;
+}
+
+.poop-emoji {
+  display: block;
+  line-height: 1;
+}
+
+@keyframes poop-fall {
+  0% {
+    transform: translate3d(-50%, 0, 0) rotate(0deg);
+  }
+  100% {
+    transform: translate3d(-50%, 165vh, 0) rotate(360deg);
+  }
+}

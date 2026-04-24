@@ -1,0 +1,92 @@
+.page {
+  padding: 24rpx 32rpx 48rpx;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 28rpx;
+  border: 2rpx solid #bbdefb;
+  box-shadow: 0 8rpx 24rpx rgba(30, 136, 229, 0.08);
+}
+
+.label {
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #0d47a1;
+  display: block;
+  margin-bottom: 12rpx;
+  line-height: 1.5;
+}
+
+.label--spaced {
+  margin-top: 28rpx;
+}
+
+.label-paren {
+  font-size: 24rpx;
+  font-weight: 400;
+  color: #7896c4;
+}
+
+.label-paren-right {
+  display: block;
+  text-align: right;
+  margin-top: 16rpx;
+  line-height: 1.4;
+}
+
+.card--danger {
+  margin-bottom: 28rpx;
+}
+
+.hint {
+  font-size: 24rpx;
+  color: #7896c4;
+  display: block;
+  margin-bottom: 20rpx;
+}
+
+.input {
+  background: #e3f4ff;
+  border-radius: 16rpx;
+  padding: 24rpx 20rpx;
+  color: #0d47a1;
+  font-size: 32rpx;
+  margin-bottom: 16rpx;
+  border: 2rpx solid #bbdefb;
+}
+
+.preview {
+  font-size: 26rpx;
+  color: #1976d2;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 24rpx;
+}
+
+.btn-save {
+  background: #1e88e5;
+  color: #ffffff;
+  font-weight: 800;
+  border-radius: 999rpx;
+  border: none;
+  margin-top: 8rpx;
+}
+
+.btn-danger {
+  background: #ffebee;
+  color: #c62828;
+  border: 2rpx solid #ef9a9a;
+  border-radius: 999rpx;
+  margin-top: 8rpx;
+}
+
+.btn-share {
+  background: #ffffff;
+  color: #1976d2;
+  border: 2rpx solid #90caf9;
+  border-radius: 999rpx;
+  margin-top: 8rpx;
+}
