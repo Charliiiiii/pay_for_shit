@@ -1,6 +1,28 @@
 <view class="page">
   <cute-sky compact="{{true}}" />
   <view class="card">
+    <text class="label">用户名与头像（排行榜展示）</text>
+
+    <view class="profile-row">
+      <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+        <image wx:if="{{avatarUrl}}" class="avatar-img" src="{{avatarUrl}}" mode="aspectFill" />
+        <view wx:else class="avatar-fallback">
+          <text class="avatar-plus">+</text>
+          <text class="avatar-tip">头像</text>
+        </view>
+      </button>
+      <input
+        class="input profile-name-input"
+        placeholder="输入昵称（例如：厕所哲学家）"
+        value="{{nicknameInput}}"
+        bindinput="onNicknameInput"
+      />
+    </view>
+
+    <button class="btn-save" bindtap="onSaveProfile">保存资料</button>
+  </view>
+
+  <view class="card">
     <text class="label">月薪（元）</text>
     <input class="input" type="digit" placeholder="例如 8000" value="{{salaryInput}}" bindinput="onSalaryInput" />
     <text class="label label--spaced">每日工时（小时）</text>
@@ -24,9 +46,5 @@
   <view class="card">
     <button class="btn-danger" bindtap="onClearRecords">清空所有记录</button>
     <text class="label-paren label-paren-right">（仅清空记录，月薪设置保留）</text>
-  </view>
-
-  <view class="card">
-    <button class="btn-share" open-type="share">分享小程序</button>
   </view>
 </view>

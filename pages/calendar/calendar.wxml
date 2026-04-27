@@ -29,5 +29,5 @@
     </view>
   </view>
 
-  <view class="hint">有记录的日子会显示对应次数的 💩（单日最多画 14 个，超出用 +n）</view>
+  <view class="hint">日历格子中显示对应次数的 💩（单日最多画 3 个，超出用 +n）</view>
 </view>

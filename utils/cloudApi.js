@@ -43,7 +43,10 @@ module.exports = {
   weekLeaderboard(limit) {
     return call('leaderboard.week', { limit })
   },
-  putProfile(nickname) {
-    return call('profile.put', { nickname })
+  getProfile() {
+    return call('profile.get')
+  },
+  putProfile(profile) {
+    return call('profile.put', profile || {})
   },
 }

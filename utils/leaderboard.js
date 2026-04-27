@@ -62,6 +62,7 @@ function weekDurationTotal(records, now = Date.now()) {
 function buildGlobalLeaderboard() {
   const records = storage.getRecords()
   const summary = storage.computeSummary()
+  const profile = storage.getProfile()
   const myWeekly = summary.weekTotal
   const mySessions = weekSessionCount(records)
   const myDuration = weekDurationTotal(records)
@@ -77,7 +78,8 @@ function buildGlobalLeaderboard() {
       weekly,
       durationSeconds,
       sessions: Math.max(1, Math.floor(mySessions * (0.3 + Math.random() * 2)) + i),
-      isMe: false
+      isMe: false,
+      avatarUrl: ''
     })
   }
 
@@ -87,7 +89,8 @@ function buildGlobalLeaderboard() {
     weekly: myWeekly,
     durationSeconds: myDuration,
     sessions: mySessions,
-    isMe: true
+    isMe: true,
+    avatarUrl: profile.avatarUrl || ''
   })
 
   rows.sort((a, b) => {

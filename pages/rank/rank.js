@@ -25,17 +25,23 @@ Page({
 
   async refreshList() {
     const settings = storage.getSettings()
+    const profile = storage.getProfile()
     const showAmountInRank = settings.rankShowAmount !== false
 
     if (cloudApi.hasCloud()) {
       try {
         const res = await cloudApi.weekLeaderboard(30)
-        const rows = (res.rows || []).map((r, idx) => ({
-          ...r,
-          rank: r.rank || idx + 1,
-          weeklyDisplay: r.weeklyDisplay || Number(r.weekly || 0).toFixed(2),
-          durationText: r.durationText || formatDurationText(r.durationSeconds),
-        }))
+        const rows = (res.rows || []).map((r, idx) => {
+          const isMe = !!r.isMe
+          const avatarUrl = r.avatarUrl || (isMe ? profile.avatarUrl || '' : '')
+          return {
+            ...r,
+            rank: r.rank || idx + 1,
+            weeklyDisplay: r.weeklyDisplay || Number(r.weekly || 0).toFixed(2),
+            durationText: r.durationText || formatDurationText(r.durationSeconds),
+            avatarUrl,
+          }
+        })
         this.setData({ rows, isCloud: true, showAmountInRank })
         return
       } catch (e) {

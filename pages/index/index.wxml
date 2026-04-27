@@ -1,8 +1,7 @@
 <view class="page">
   <cute-sky />
   <view class="hero">
-    <text class="title" wx:if="{{!isRunning}}">带薪噗噗计时器</text>
-    <text class="subtitle" wx:if="{{!isRunning}}">蹲下去的每一秒，都是赚到的。</text>
+    <text class="title" wx:if="{{!isRunning}}">带薪噗噗计算器</text> 
   </view>
 
   <view class="action-area">
@@ -17,7 +16,7 @@
       <text class="preview-earn gold-text">实时收益 ¥ {{previewEarn}}</text>
       <text wx:if="{{durationSeconds >= 300}}" class="warn-tip">建议不超过 5 分钟，注意腿麻</text>
     </view>
-    <button wx:else class="big-btn start" bindtap="onToggleTimer" hover-class="btn-hover">开始噗噗</button>
+    <button wx:else class="big-btn start" bindtap="onToggleTimer" hover-class="btn-hover">开始</button>
   </view>
 
   <view wx:if="{{isRunning}}" class="end-row">

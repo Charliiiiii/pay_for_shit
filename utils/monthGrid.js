@@ -22,7 +22,7 @@ function buildMonthGrid(year, month, countMap) {
   for (let d = 1; d <= lastDay; d++) {
     const key = dateKey(year, month, d)
     const count = countMap[key] || 0
-    const show = Math.min(count, 14)
+    const show = Math.min(count, 3)
     const poopArray = count > 0 ? new Array(show).fill('💩') : []
     const overflow = count > show ? count - show : 0
     cells.push({

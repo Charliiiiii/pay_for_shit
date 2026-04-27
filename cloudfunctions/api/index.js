@@ -209,13 +209,16 @@ async function getWeekLeaderboard(data, openid) {
 
   const groupedRows = Array.isArray(agg.list) ? agg.list : []
   const openidList = groupedRows.map((r) => r._id)
-  const nicknameMap = {}
+  const profileMap = {}
   if (openidList.length > 0) {
     const openidBatches = chunkArray(openidList, 100)
     for (const ids of openidBatches) {
       const pRes = await db.collection('profiles').where({ _openid: _.in(ids) }).get()
       pRes.data.forEach((p) => {
-        nicknameMap[p._openid] = p.nickname || null
+        profileMap[p._openid] = {
+          nickname: p.nickname || null,
+          avatarUrl: p.avatarUrl || '',
+        }
       })
     }
   }
@@ -224,10 +227,12 @@ async function getWeekLeaderboard(data, openid) {
     .map((r) => {
       const rowOpenid = r._id
       const weekly = roundMoney(r.weekly)
-      const baseName = nicknameMap[rowOpenid] || `用户${String(rowOpenid).slice(-6)}`
+      const profile = profileMap[rowOpenid] || { nickname: null, avatarUrl: '' }
+      const baseName = profile.nickname || `用户${String(rowOpenid).slice(-6)}`
       return {
         id: rowOpenid,
         name: rowOpenid === openid ? `${baseName}（我）` : baseName,
+        avatarUrl: profile.avatarUrl || '',
         weekly,
         durationSeconds: Math.max(0, Math.floor(Number(r.durationSeconds) || 0)),
         durationText: formatDurationText(r.durationSeconds),
@@ -248,14 +253,33 @@ async function getWeekLeaderboard(data, openid) {
 
 async function saveProfile(openid, data) {
   const nickname = String(data.nickname || '').trim().slice(0, 32)
-  if (!nickname) throw new Error('nickname required')
+  const avatarUrl = String(data.avatarUrl || '').trim()
+  if (!nickname && !avatarUrl) throw new Error('nickname or avatarUrl required')
   const res = await db.collection('profiles').where({ _openid: openid }).limit(1).get()
   if (res.data[0]) {
-    await db.collection('profiles').doc(res.data[0]._id).update({ data: { nickname, updatedAt: Date.now() } })
+    const old = res.data[0]
+    await db.collection('profiles').doc(old._id).update({
+      data: {
+        nickname: nickname || old.nickname || '',
+        avatarUrl: avatarUrl || old.avatarUrl || '',
+        updatedAt: Date.now(),
+      },
+    })
   } else {
-    await db.collection('profiles').add({ data: { _openid: openid, nickname, updatedAt: Date.now() } })
+    await db.collection('profiles').add({
+      data: { _openid: openid, nickname, avatarUrl, updatedAt: Date.now() },
+    })
   }
-  return { nickname }
+  return { nickname, avatarUrl }
+}
+
+async function getMyProfile(openid) {
+  const res = await db.collection('profiles').where({ _openid: openid }).limit(1).get()
+  const row = res.data[0] || {}
+  return {
+    nickname: row.nickname || '',
+    avatarUrl: row.avatarUrl || '',
+  }
 }
 
 exports.main = async (event) => {
@@ -288,6 +312,9 @@ exports.main = async (event) => {
     }
     if (action === 'profile.put') {
       return { ok: true, data: await saveProfile(OPENID, data) }
+    }
+    if (action === 'profile.get') {
+      return { ok: true, data: await getMyProfile(OPENID) }
     }
 
     return { ok: false, message: `unknown action: ${String(action)}` }

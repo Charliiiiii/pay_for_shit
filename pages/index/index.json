@@ -1,5 +1,5 @@
 {
-  "navigationBarTitleText": "带薪噗噗计时器",
+  "navigationBarTitleText": "带薪噗噗计算器",
   "usingComponents": {
     "cute-sky": "/components/cute-sky/cute-sky"
   }

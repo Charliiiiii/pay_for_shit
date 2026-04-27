@@ -1,5 +1,6 @@
 const KEY_SETTINGS = 'pp_user_settings'
 const KEY_RECORDS = 'pp_records'
+const KEY_PROFILE = 'pp_user_profile'
 
 const defaultSettings = () => ({
   monthlySalary: 0,
@@ -53,6 +54,28 @@ function setRecords(records) {
 
 function clearAllData() {
   wx.removeStorageSync(KEY_RECORDS)
+}
+
+function getProfile() {
+  try {
+    const raw = wx.getStorageSync(KEY_PROFILE)
+    if (raw && typeof raw === 'object') {
+      return {
+        nickname: String(raw.nickname || '').trim(),
+        avatarUrl: String(raw.avatarUrl || '').trim(),
+      }
+    }
+  } catch (e) {}
+  return { nickname: '', avatarUrl: '' }
+}
+
+function setProfile(profile) {
+  const p = {
+    nickname: String(profile && profile.nickname ? profile.nickname : '').trim(),
+    avatarUrl: String(profile && profile.avatarUrl ? profile.avatarUrl : '').trim(),
+  }
+  wx.setStorageSync(KEY_PROFILE, p)
+  return p
 }
 
 function startOfDay(ts) {
@@ -163,10 +186,13 @@ module.exports = {
   getRecords,
   addRecord,
   setRecords,
+  getProfile,
+  setProfile,
   clearAllData,
   computeSummary,
   groupRecordsByDate,
   countRecordsByDate,
   KEY_SETTINGS,
-  KEY_RECORDS
+  KEY_RECORDS,
+  KEY_PROFILE,
 }

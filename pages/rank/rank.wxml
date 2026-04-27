@@ -11,6 +11,10 @@
       class="row {{item.isMe ? 'row--me' : ''}}"
     >
       <text class="rank">{{item.rank}}</text>
+      <view class="avatar-wrap">
+        <image wx:if="{{item.avatarUrl}}" class="avatar" src="{{item.avatarUrl}}" mode="aspectFill" />
+        <view wx:else class="avatar-text">{{item.name.slice(0, 1)}}</view>
+      </view>
       <view class="mid">
         <text class="name">{{item.name}}</text>
         <text class="sub">本周 {{item.sessions}} 次噗噗</text>

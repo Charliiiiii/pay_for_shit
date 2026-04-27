@@ -279,7 +279,7 @@ Page({
 
   onShareAppMessage() {
     return {
-      title: '带薪噗噗计时器 — 蹲下不是偷懒，是拿回属于我的剩余价值',
+      title: '带薪噗噗计算器 — 蹲下不是偷懒，是拿回属于我的剩余价值',
       path: '/pages/index/index'
     }
   }

@@ -1,5 +1,5 @@
 {
-  "description": "带薪噗噗计时器",
+  "description": "带薪噗噗计算器",
   "packOptions": {
     "ignore": [],
     "include": []
@@ -50,7 +50,7 @@
   "cloudfunctionRoot": "cloudfunctions",
   "libVersion": "3.15.2",
   "appid": "wx0a9a1af76dfcfbc5",
-  "projectname": "带薪噗噗计时器",
+  "projectname": "带薪噗噗计算器",
   "condition": {},
   "simulatorPluginLibVersion": {},
   "editorSetting": {}
