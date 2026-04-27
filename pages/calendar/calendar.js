@@ -1,5 +1,6 @@
 const storage = require('../../utils/storage')
 const { buildMonthGrid } = require('../../utils/monthGrid')
+const { syncRecordsFromCloudToLocal } = require('../../utils/cloudSync')
 
 Page({
   data: {
@@ -14,10 +15,15 @@ Page({
     this.setData({ year: t.getFullYear(), month: t.getMonth() + 1 })
   },
 
-  onShow() {
+  async onShow() {
     if (!this.data.year) {
       const t = new Date()
       this.setData({ year: t.getFullYear(), month: t.getMonth() + 1 })
+    }
+    try {
+      await syncRecordsFromCloudToLocal()
+    } catch (e) {
+      console.warn('[calendar] pull cloud records failed', e)
     }
     this.refreshGrid()
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {

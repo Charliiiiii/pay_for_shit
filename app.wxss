@@ -1,18 +1,18 @@
 page {
-  background: #e3f4ff;
+  background: #f7f5f6;
   min-height: 100vh;
-  color: #1565c0;
+  color: #8b8186;
   font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", sans-serif;
   box-sizing: border-box;
 }
 
 .gold-text {
-  color: #0d47a1;
+  color: #756a70;
   font-weight: 700;
 }
 
 .btn-primary {
-  background: #1e88e5;
+  background: #a79aa2;
   color: #ffffff;
   font-weight: 700;
   border-radius: 999rpx;
@@ -21,9 +21,9 @@ page {
 
 .btn-ghost {
   background: #ffffff;
-  color: #1976d2;
+  color: #8b8186;
   border-radius: 999rpx;
-  border: 2rpx solid #90caf9;
+  border: 2rpx solid #d8d0d4;
 }
 
 button::after {

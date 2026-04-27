@@ -1,6 +1,8 @@
 const calc = require('../../utils/calc')
 const storage = require('../../utils/storage')
 const quotes = require('../../utils/quotes')
+const cloudApi = require('../../utils/cloudApi')
+const { syncRecordsFromCloudToLocal } = require('../../utils/cloudSync')
 
 const POOP_RAIN_COUNT = 24
 
@@ -15,7 +17,7 @@ function buildPoopRain() {
     const opacity = +(0.72 + Math.random() * 0.26).toFixed(2)
     drops.push({
       id: `p${i}-${Date.now()}`,
-      style: `left:${left}%;animation-duration:${duration}s;animation-delay:${delay}s;font-size:${size}rpx;opacity:${opacity};`
+      style: `left:${left}%;animation-duration:${duration}s;animation-delay:${delay}s;font-size:${size}rpx;opacity:${opacity};`,
     })
   }
   return drops
@@ -32,18 +34,23 @@ Page({
       weekTotal: 0,
       monthTotal: 0,
       allTimeTotal: 0,
-      bestRecord: null
+      bestRecord: null,
     },
     lastRecord: null,
     monthlySalary: 0,
     workHoursPerDay: 8,
-    poopRain: []
+    poopRain: [],
   },
 
   timerId: null,
   sessionStart: 0,
 
-  onShow() {
+  async onShow() {
+    try {
+      await syncRecordsFromCloudToLocal()
+    } catch (e) {
+      console.warn('[index] pull cloud records failed', e)
+    }
     this.refreshStats()
     if (typeof this.getTabBar === 'function' && this.getTabBar()) {
       this.getTabBar().setData({ selected: 0 })
@@ -68,7 +75,7 @@ Page({
       const fd = calc.formatDuration(r.durationSeconds)
       lastRecord = {
         durationText: fd.text,
-        earned: calc.roundMoney(r.earnedMoney)
+        earned: calc.roundMoney(r.earnedMoney),
       }
     }
     let best = summary.bestRecord
@@ -80,7 +87,7 @@ Page({
       monthlySalary: settings.monthlySalary,
       workHoursPerDay: settings.workHoursPerDay || 8,
       summary: { ...summary, bestRecord: best },
-      lastRecord
+      lastRecord,
     })
   },
 
@@ -99,7 +106,7 @@ Page({
     this.setData({
       durationSeconds,
       displayClock: calc.formatClock(durationSeconds),
-      previewEarn
+      previewEarn,
     })
   },
 
@@ -112,7 +119,7 @@ Page({
         confirmText: '去设置',
         success: (res) => {
           if (res.confirm) wx.navigateTo({ url: '/pages/settings/settings' })
-        }
+        },
       })
       return
     }
@@ -127,7 +134,7 @@ Page({
         durationSeconds: 0,
         displayClock: '00:00',
         previewEarn: '0.00',
-        poopRain: buildPoopRain()
+        poopRain: buildPoopRain(),
       })
       this.clearTick()
       this.timerId = setInterval(() => this.tick(), 1000)
@@ -149,7 +156,7 @@ Page({
     const earned = calc.earnedMoney(
       durationSeconds,
       this.data.monthlySalary,
-      this.data.workHoursPerDay
+      this.data.workHoursPerDay,
     )
     if (durationSeconds <= 0) {
       this.setData({ isRunning: false, poopRain: [] })
@@ -165,9 +172,17 @@ Page({
       startTime: this.sessionStart,
       endTime: Date.now(),
       durationSeconds,
-      earnedMoney: earned
+      earnedMoney: earned,
     }
     storage.addRecord(record)
+
+    // 非阻塞云同步：保证本地体验优先
+    if (cloudApi.hasCloud()) {
+      cloudApi.batchUpsertRecords([record]).catch((e) => {
+        console.warn('[index] sync record failed', e)
+      })
+    }
+
     const summary = storage.computeSummary()
     const monthEstimate = calc.roundMoney(summary.weekTotal * (30 / 7))
     const yearFromPace = calc.roundMoney(earned * 252)
@@ -182,7 +197,7 @@ Page({
       weekTotal: summary.weekTotal,
       monthEstimate,
       yearFromPace,
-      recordId: record.id
+      recordId: record.id,
     }
 
     this.setData({ isRunning: false, poopRain: [] })
@@ -200,7 +215,7 @@ Page({
   onShareAppMessage() {
     return {
       title: '带薪噗噗计时器 — 蹲下不是偷懒，是拿回属于我的剩余价值',
-      path: '/pages/index/index'
+      path: '/pages/index/index',
     }
-  }
+  },
 })

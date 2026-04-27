@@ -9,16 +9,16 @@
   ],
   "window": {
     "navigationBarTitleText": "带薪噗噗计时器",
-    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarBackgroundColor": "#fbf9fa",
     "navigationBarTextStyle": "black",
-    "backgroundColor": "#e3f4ff",
+    "backgroundColor": "#f7f5f6",
     "backgroundTextStyle": "dark"
   },
   "tabBar": {
     "custom": true,
-    "color": "#7896c4",
-    "selectedColor": "#1565c0",
-    "backgroundColor": "#ffffff",
+    "color": "#a8a1a5",
+    "selectedColor": "#8b8186",
+    "backgroundColor": "#fbf9fa",
     "borderStyle": "white",
     "list": [
       {
@@ -27,11 +27,11 @@
       },
       {
         "pagePath": "pages/calendar/calendar",
-        "text": "噗噗日历"
+        "text": "日历"
       },
       {
         "pagePath": "pages/rank/rank",
-        "text": "噗噗排行榜"
+        "text": "排行榜"
       }
     ]
   },

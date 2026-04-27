@@ -7,6 +7,17 @@
     <text class="hint">时薪 = 月薪 ÷ 21.75 天 ÷ 每日工时；常见 8，支持小数如 7.5</text>
     <input class="input" type="digit" placeholder="例如 8" value="{{hoursInput}}" bindinput="onHoursInput" />
     <text class="preview" wx:if="{{hourlyPreview > 0}}">当前估算时薪：¥ {{hourlyPreview}} / 小时</text>
+
+    <view class="switch-row">
+      <text class="switch-label">排行榜显示金额</text>
+      <switch
+        checked="{{rankShowAmount}}"
+        bindchange="onToggleRankAmount"
+        color="#a79aa2"
+      />
+    </view>
+    <text class="hint">关闭后，排行榜仅显示时长，不显示金额。</text>
+
     <button class="btn-save" bindtap="onSave">保存</button>
   </view>
 

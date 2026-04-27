@@ -3,8 +3,8 @@ Component({
     selected: 0,
     list: [
       { pagePath: '/pages/index/index', text: '计时' },
-      { pagePath: '/pages/calendar/calendar', text: '噗噗日历' },
-      { pagePath: '/pages/rank/rank', text: '噗噗排行榜' }
+      { pagePath: '/pages/calendar/calendar', text: '日历' },
+      { pagePath: '/pages/rank/rank', text: '排行榜' }
     ]
   },
 

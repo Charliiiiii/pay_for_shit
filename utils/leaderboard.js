@@ -47,6 +47,15 @@ function weekEarnedTotal(records, now = Date.now()) {
   return calc.roundMoney(s)
 }
 
+function weekDurationTotal(records, now = Date.now()) {
+  let s = 0
+  for (const r of records) {
+    const t = r.endTime || r.startTime
+    if (isInWeek(t, now)) s += Number(r.durationSeconds) || 0
+  }
+  return Math.max(0, Math.floor(s))
+}
+
 /**
  * 默认「全站」：本机真实「我」+ 模拟用户，按本周摸金排序（示意）
  */
@@ -55,15 +64,18 @@ function buildGlobalLeaderboard() {
   const summary = storage.computeSummary()
   const myWeekly = summary.weekTotal
   const mySessions = weekSessionCount(records)
+  const myDuration = weekDurationTotal(records)
 
   const rows = []
   for (let i = 0; i < FAKE_NAMES.length; i++) {
     const jitter = 0.35 + Math.random() * 1.45
     const weekly = calc.roundMoney(Math.max(0.01, myWeekly * jitter + (Math.random() - 0.5) * 3))
+    const durationSeconds = Math.max(30, Math.floor(myDuration * (0.3 + Math.random() * 1.8)) + i * 13)
     rows.push({
       id: `npc-${i}`,
       name: FAKE_NAMES[i],
       weekly,
+      durationSeconds,
       sessions: Math.max(1, Math.floor(mySessions * (0.3 + Math.random() * 2)) + i),
       isMe: false
     })
@@ -73,24 +85,27 @@ function buildGlobalLeaderboard() {
     id: 'me',
     name: '我（本机）',
     weekly: myWeekly,
+    durationSeconds: myDuration,
     sessions: mySessions,
     isMe: true
   })
 
   rows.sort((a, b) => {
-    if (b.weekly !== a.weekly) return b.weekly - a.weekly
+    if (b.durationSeconds !== a.durationSeconds) return b.durationSeconds - a.durationSeconds
     return b.sessions - a.sessions
   })
 
   return rows.map((r, idx) => ({
     ...r,
     rank: idx + 1,
-    weeklyDisplay: calc.roundMoney(r.weekly).toFixed(2)
+    weeklyDisplay: calc.roundMoney(r.weekly).toFixed(2),
+    durationText: calc.formatDuration(r.durationSeconds).text
   }))
 }
 
 module.exports = {
   buildGlobalLeaderboard,
   weekSessionCount,
-  weekEarnedTotal
+  weekEarnedTotal,
+  weekDurationTotal
 }

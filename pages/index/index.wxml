@@ -1,7 +1,7 @@
 <view class="page">
   <cute-sky />
   <view class="hero">
-    <text class="title" wx:if="{{!isRunning}}">带薪💩计时器</text>
+    <text class="title" wx:if="{{!isRunning}}">带薪噗噗计时器</text>
     <text class="subtitle" wx:if="{{!isRunning}}">蹲下去的每一秒，都是赚到的。</text>
   </view>
 
@@ -25,16 +25,15 @@
   </view>
 
   <view wx:if="{{!isRunning}}" class="stats-block">
-    <text class="stats-title">今日战报</text>
+    <text class="stats-title">战报</text>
     <view class="stat-line">今日已赚 <text class="gold-text">¥ {{summary.todayTotal}}</text></view>
     <view class="stat-line">本周已赚 <text class="gold-text">¥ {{summary.weekTotal}}</text></view>
     <view class="divider"></view>
     <view wx:if="{{lastRecord}}" class="last-record">
-      <text class="muted">上次 {{lastRecord.durationText}}</text>
-      <text class="muted">¥ {{lastRecord.earned}}</text>
+       <text class="muted">上次记录： {{lastRecord.durationText}} {{lastRecord.earned}}¥</text>
     </view>
     <view wx:if="{{summary.bestRecord}}" class="best">
-      <text class="muted">历史最高 {{summary.bestRecord.durationText}} · ¥ {{summary.bestRecord.earned}}</text>
+      <text class="muted">历史最高： {{summary.bestRecord.durationText}} {{summary.bestRecord.earned}}¥</text>
     </view>
   </view>
 

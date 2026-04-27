@@ -14,9 +14,9 @@
   border-radius: 24rpx;
   overflow: hidden;
   line-height: 0;
-  border: 2rpx solid #bbdefb;
+  border: 2rpx solid #e6e1e4;
   box-sizing: border-box;
-  box-shadow: 0 8rpx 24rpx rgba(30, 136, 229, 0.1);
+  box-shadow: 0 8rpx 24rpx rgba(236, 64, 122, 0.12);
 }
 
 .cute-sky--compact .sky-banner-wrap {

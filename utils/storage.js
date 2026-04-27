@@ -5,7 +5,8 @@ const defaultSettings = () => ({
   monthlySalary: 0,
   workDaysPerMonth: 21.75,
   workHoursPerDay: 8,
-  hourlyWage: 0
+  hourlyWage: 0,
+  rankShowAmount: true
 })
 
 function getSettings() {
@@ -40,6 +41,12 @@ function getRecords() {
 function addRecord(record) {
   const list = getRecords()
   list.unshift(record)
+  wx.setStorageSync(KEY_RECORDS, list)
+  return list
+}
+
+function setRecords(records) {
+  const list = Array.isArray(records) ? records : []
   wx.setStorageSync(KEY_RECORDS, list)
   return list
 }
@@ -155,6 +162,7 @@ module.exports = {
   setSettings,
   getRecords,
   addRecord,
+  setRecords,
   clearAllData,
   computeSummary,
   groupRecordsByDate,

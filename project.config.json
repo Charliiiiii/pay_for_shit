@@ -47,8 +47,9 @@
     "disableSWC": true
   },
   "compileType": "miniprogram",
+  "cloudfunctionRoot": "cloudfunctions",
   "libVersion": "3.15.2",
-  "appid": "wxd30b3125f2afacd7",
+  "appid": "wx0a9a1af76dfcfbc5",
   "projectname": "带薪噗噗计时器",
   "condition": {},
   "simulatorPluginLibVersion": {},

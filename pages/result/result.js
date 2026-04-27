@@ -161,16 +161,16 @@ Page({
           let y = (H - totalH) / 2 + hCelebrate * 0.78
           ctx.textBaseline = 'alphabetic'
 
-          ctx.fillStyle = '#e3f4ff'
+          ctx.fillStyle = '#f7f5f6'
           ctx.fillRect(0, 0, W, H)
 
           ctx.textAlign = 'center'
-          ctx.fillStyle = '#0d47a1'
+          ctx.fillStyle = '#756a70'
           ctx.font = `bold ${rpx(48)}px sans-serif`
           ctx.fillText('🎉恭喜🎉', W / 2, y)
           y += hCelebrate + gapS
 
-          ctx.fillStyle = '#5c8bc9'
+          ctx.fillStyle = '#b5adb2'
           ctx.font = `${rpx(30)}px sans-serif`
           ctx.fillText('本次收益', W / 2, y)
           y += hHead + gapM
@@ -180,33 +180,33 @@ Page({
           const durStr = `蹲了${session.durationText}`
           ctx.textAlign = 'left'
           ctx.font = `900 ${rpx(46)}px sans-serif`
-          ctx.fillStyle = hideSensitive ? '#7896c4' : '#0d47a1'
+          ctx.fillStyle = hideSensitive ? '#a8a1a5' : '#756a70'
           const w1 = ctx.measureText(earnStr).width
           ctx.font = `${rpx(28)}px sans-serif`
-          ctx.fillStyle = '#90a4c4'
+          ctx.fillStyle = '#b8b3b6'
           const w2 = ctx.measureText(sep).width
           ctx.font = `700 ${rpx(42)}px sans-serif`
-          ctx.fillStyle = '#1565c0'
+          ctx.fillStyle = '#8b8186'
           const w3 = ctx.measureText(durStr).width
           const tw = w1 + w2 + w3
           let x = W / 2 - tw / 2
           ctx.font = `900 ${rpx(46)}px sans-serif`
-          ctx.fillStyle = hideSensitive ? '#7896c4' : '#0d47a1'
+          ctx.fillStyle = hideSensitive ? '#a8a1a5' : '#756a70'
           ctx.fillText(earnStr, x, y)
           x += w1
           ctx.font = `${rpx(28)}px sans-serif`
-          ctx.fillStyle = '#90a4c4'
+          ctx.fillStyle = '#b8b3b6'
           ctx.fillText(sep, x, y - rpx(4))
           x += w2
           ctx.font = `700 ${rpx(42)}px sans-serif`
-          ctx.fillStyle = '#1565c0'
+          ctx.fillStyle = '#8b8186'
           ctx.fillText(durStr, x, y)
           ctx.textAlign = 'center'
           y += rpx(20)
           const panelTop = y
           ctx.fillStyle = '#ffffff'
           ctx.fillRect(panelX, panelTop, panelW, panelH)
-          ctx.strokeStyle = '#bbdefb'
+          ctx.strokeStyle = '#d8d0d4'
           ctx.lineWidth = rpx(2)
           ctx.strokeRect(panelX, panelTop, panelW, panelH)
 
@@ -216,19 +216,19 @@ Page({
           const drawPanelRow = (label, val) => {
             const valStr = `¥ ${val}`
             ctx.font = `${rpx(28)}px sans-serif`
-            ctx.fillStyle = '#1565c0'
+            ctx.fillStyle = '#8b8186'
             const mL = ctx.measureText(label).width
             ctx.font = `700 ${rpx(28)}px sans-serif`
-            ctx.fillStyle = '#0d47a1'
+            ctx.fillStyle = '#756a70'
             const mR = ctx.measureText(valStr).width
             let x0 = W / 2 - (mL + gapKV + mR) / 2
             ctx.textAlign = 'left'
             ctx.font = `${rpx(28)}px sans-serif`
-            ctx.fillStyle = '#1565c0'
+            ctx.fillStyle = '#8b8186'
             ctx.fillText(label, x0, py)
             x0 += mL + gapKV
             ctx.font = `700 ${rpx(28)}px sans-serif`
-            ctx.fillStyle = '#0d47a1'
+            ctx.fillStyle = '#756a70'
             ctx.fillText(valStr, x0, py)
             ctx.textAlign = 'center'
             py += rowH
@@ -241,24 +241,24 @@ Page({
           const lab4 = '按此节奏，一年约白嫖：'
           const val4 = `¥ ${moneyOrHide(hideSensitive, session.yearFromPace)}`
           ctx.font = `${rpx(24)}px sans-serif`
-          ctx.fillStyle = '#7896c4'
+          ctx.fillStyle = '#a8a1a5'
           const m4a = ctx.measureText(lab4).width
           ctx.font = `700 ${rpx(24)}px sans-serif`
-          ctx.fillStyle = '#0d47a1'
+          ctx.fillStyle = '#756a70'
           const m4b = ctx.measureText(val4).width
           let x4 = W / 2 - (m4a + gapKV + m4b) / 2
           ctx.textAlign = 'left'
           ctx.font = `${rpx(24)}px sans-serif`
-          ctx.fillStyle = '#7896c4'
+          ctx.fillStyle = '#a8a1a5'
           ctx.fillText(lab4, x4, py)
           x4 += m4a + gapKV
           ctx.font = `700 ${rpx(24)}px sans-serif`
-          ctx.fillStyle = '#0d47a1'
+          ctx.fillStyle = '#756a70'
           ctx.fillText(val4, x4, py)
           ctx.textAlign = 'center'
 
           y = panelTop + panelH + gapL
-          ctx.fillStyle = '#1976d2'
+          ctx.fillStyle = '#8b8186'
           ctx.font = `italic ${rpx(28)}px sans-serif`
           let qy = y + rpx(28)
           quoteLines.forEach((ln) => {
@@ -267,7 +267,7 @@ Page({
           })
 
           y = qy + gapM
-          ctx.fillStyle = '#7896c4'
+          ctx.fillStyle = '#a8a1a5'
           ctx.font = `${rpx(22)}px sans-serif`
           ctx.fillText('带薪噗噗计算器', W / 2, y)
 

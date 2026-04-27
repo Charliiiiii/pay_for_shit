@@ -7,14 +7,14 @@
   border-radius: 24rpx;
   padding: 32rpx;
   margin-bottom: 28rpx;
-  border: 2rpx solid #bbdefb;
-  box-shadow: 0 8rpx 24rpx rgba(30, 136, 229, 0.08);
+  border: 2rpx solid #e6e1e4;
+  box-shadow: 0 8rpx 24rpx rgba(236, 64, 122, 0.1);
 }
 
 .label {
   font-size: 32rpx;
   font-weight: 700;
-  color: #0d47a1;
+  color: #756a70;
   display: block;
   margin-bottom: 12rpx;
   line-height: 1.5;
@@ -27,7 +27,7 @@
 .label-paren {
   font-size: 24rpx;
   font-weight: 400;
-  color: #7896c4;
+  color: #a8a1a5;
 }
 
 .label-paren-right {
@@ -43,31 +43,44 @@
 
 .hint {
   font-size: 24rpx;
-  color: #7896c4;
+  color: #a8a1a5;
   display: block;
   margin-bottom: 20rpx;
 }
 
 .input {
-  background: #e3f4ff;
+  background: #f7f5f6;
   border-radius: 16rpx;
   padding: 24rpx 20rpx;
-  color: #0d47a1;
+  color: #756a70;
   font-size: 32rpx;
   margin-bottom: 16rpx;
-  border: 2rpx solid #bbdefb;
+  border: 2rpx solid #e6e1e4;
 }
 
 .preview {
   font-size: 26rpx;
-  color: #1976d2;
+  color: #8b8186;
   font-weight: 600;
   display: block;
   margin-bottom: 24rpx;
 }
 
+.switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 4rpx 0 10rpx;
+}
+
+.switch-label {
+  font-size: 28rpx;
+  color: #756a70;
+  font-weight: 600;
+}
+
 .btn-save {
-  background: #1e88e5;
+  background: #a79aa2;
   color: #ffffff;
   font-weight: 800;
   border-radius: 999rpx;
@@ -76,17 +89,17 @@
 }
 
 .btn-danger {
-  background: #ffebee;
-  color: #c62828;
-  border: 2rpx solid #ef9a9a;
+  background: #fff0f4;
+  color: #8b8186;
+  border: 2rpx solid #d8d0d4;
   border-radius: 999rpx;
   margin-top: 8rpx;
 }
 
 .btn-share {
   background: #ffffff;
-  color: #1976d2;
-  border: 2rpx solid #90caf9;
+  color: #8b8186;
+  border: 2rpx solid #d8d0d4;
   border-radius: 999rpx;
   margin-top: 8rpx;
 }

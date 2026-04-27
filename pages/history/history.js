@@ -1,5 +1,6 @@
 const calc = require('../../utils/calc')
 const storage = require('../../utils/storage')
+const { syncRecordsFromCloudToLocal } = require('../../utils/cloudSync')
 
 function formatTime(ts) {
   const d = new Date(ts)
@@ -11,7 +12,12 @@ Page({
     groups: []
   },
 
-  onShow() {
+  async onShow() {
+    try {
+      await syncRecordsFromCloudToLocal()
+    } catch (e) {
+      console.warn('[history] pull cloud records failed', e)
+    }
     this.loadGroups()
   },
 

@@ -16,11 +16,11 @@
         <text class="sub">本周 {{item.sessions}} 次噗噗</text>
       </view>
       <view class="right">
-        <text class="amt">¥{{item.weeklyDisplay}}</text>
-        <text class="sub">本周摸金</text>
+        <text class="time">{{item.durationText}}</text>
+        <text wx:if="{{showAmountInRank}}" class="amt">¥{{item.weeklyDisplay}}</text>
       </view>
     </view>
   </view>
 
-  <view class="foot">排行含演示数据；真实数据仅「我（本机）」来自本设备记录。</view>
+  <view class="foot">{{isCloud ? "用户可在首页“计时 - 设置”中决定是否在排行榜显示金额" : "当前为本地演示榜；云榜加载失败时自动回退"}}</view>
 </view>

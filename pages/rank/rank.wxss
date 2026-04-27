@@ -20,21 +20,21 @@
 }
 
 .seg-item--on {
-  background: #e3f4ff;
-  color: #0d47a1;
-  border: 2rpx solid #90caf9;
+  background: #f7f5f6;
+  color: #756a70;
+  border: 2rpx solid #d8d0d4;
 }
 
 .seg-item--off {
   background: #ffffff;
-  color: #7896c4;
-  border: 2rpx solid #bbdefb;
+  color: #a8a1a5;
+  border: 2rpx solid #e6e1e4;
 }
 
 .list {
   background: #ffffff;
   border-radius: 20rpx;
-  border: 2rpx solid #bbdefb;
+  border: 2rpx solid #e6e1e4;
   overflow: hidden;
 }
 
@@ -42,7 +42,7 @@
   display: flex;
   align-items: center;
   padding: 24rpx 20rpx;
-  border-bottom: 2rpx solid #e3f4ff;
+  border-bottom: 2rpx solid #f7f5f6;
 }
 
 .row:last-child {
@@ -50,14 +50,14 @@
 }
 
 .row--me {
-  background: #fff8e1;
+  background: #fff6fa;
 }
 
 .rank {
   width: 56rpx;
   font-size: 32rpx;
   font-weight: 900;
-  color: #1565c0;
+  color: #8b8186;
   text-align: center;
 }
 
@@ -72,7 +72,7 @@
 .name {
   font-size: 30rpx;
   font-weight: 800;
-  color: #0d47a1;
+  color: #756a70;
 }
 
 .right {
@@ -83,19 +83,25 @@
 }
 
 .amt {
+  font-size: 22rpx;
+  font-weight: 700;
+  color: #a8a1a5;
+}
+
+.time {
   font-size: 30rpx;
   font-weight: 900;
-  color: #e65100;
+  color: #8b8186;
 }
 
 .sub {
   font-size: 22rpx;
-  color: #7896c4;
+  color: #a8a1a5;
 }
 
 .foot {
   margin-top: 28rpx;
   font-size: 22rpx;
-  color: #7896c4;
+  color: #a8a1a5;
   line-height: 1.5;
 }

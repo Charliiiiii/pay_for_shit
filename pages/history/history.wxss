@@ -4,7 +4,7 @@
 
 .empty {
   text-align: center;
-  color: #7896c4;
+  color: #a8a1a5;
   padding: 120rpx 32rpx;
   font-size: 28rpx;
 }
@@ -14,8 +14,8 @@
   border-radius: 20rpx;
   margin-bottom: 20rpx;
   overflow: hidden;
-  border: 2rpx solid #bbdefb;
-  box-shadow: 0 6rpx 20rpx rgba(30, 136, 229, 0.08);
+  border: 2rpx solid #e6e1e4;
+  box-shadow: 0 6rpx 20rpx rgba(236, 64, 122, 0.1);
 }
 
 .day-head {
@@ -29,22 +29,22 @@
   flex: 1;
   font-size: 30rpx;
   font-weight: 700;
-  color: #0d47a1;
+  color: #756a70;
 }
 
 .day-meta {
   font-size: 26rpx;
-  color: #5c8bc9;
+  color: #b5adb2;
 }
 
 .chev {
   font-size: 24rpx;
-  color: #42a5f5;
+  color: #b5adb2;
   margin-left: 8rpx;
 }
 
 .day-body {
-  border-top: 2rpx solid #e3f2fd;
+  border-top: 2rpx solid #f7f5f6;
   padding: 8rpx 0 16rpx;
 }
 
@@ -53,12 +53,12 @@
   align-items: center;
   padding: 16rpx 24rpx;
   font-size: 26rpx;
-  color: #1565c0;
+  color: #8b8186;
 }
 
 .t {
   width: 140rpx;
-  color: #90a4c4;
+  color: #b8b3b6;
 }
 
 .d {
@@ -70,5 +70,5 @@
 }
 
 .gold {
-  color: #0d47a1;
+  color: #756a70;
 }

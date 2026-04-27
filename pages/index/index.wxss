@@ -45,7 +45,7 @@
 .title {
   font-size: 46rpx;
   font-weight: 800;
-  color: #0d47a1;
+  color: #756a70;
   letter-spacing: 2rpx;
 }
 
@@ -53,7 +53,7 @@
   display: block;
   margin-top: 16rpx;
   font-size: 26rpx;
-  color: #5c8bc9;
+  color: #b5adb2;
 }
 
 .timer-card {
@@ -61,9 +61,9 @@
   background: #ffffff;
   border-radius: 32rpx;
   padding: 40rpx 28rpx 36rpx;
-  border: 3rpx solid #bbdefb;
+  border: 3rpx solid #e6e1e4;
   text-align: center;
-  box-shadow: 0 12rpx 32rpx rgba(30, 136, 229, 0.12);
+  box-shadow: 0 12rpx 32rpx rgba(236, 64, 122, 0.14);
 }
 
 .timer-card.pulse {
@@ -73,12 +73,10 @@
 @keyframes breathe {
   0%,
   100% {
-    transform: scale(1);
-    box-shadow: 0 12rpx 32rpx rgba(30, 136, 229, 0.12);
+    box-shadow: 0 12rpx 32rpx rgba(236, 64, 122, 0.14);
   }
   50% {
-    transform: scale(1.01);
-    box-shadow: 0 16rpx 40rpx rgba(30, 136, 229, 0.22);
+    box-shadow: 0 16rpx 40rpx rgba(236, 64, 122, 0.2);
   }
 }
 
@@ -111,10 +109,14 @@
   flex-shrink: 0;
   font-size: 68rpx;
   font-weight: 800;
+  /* 小程序端并非都支持 tabular-nums，额外指定等宽数字字体防止抖动 */
+  font-family: "SF Mono", Menlo, Consolas, "Roboto Mono", monospace;
   font-variant-numeric: tabular-nums;
-  color: #1976d2;
+  color: #8b8186;
   letter-spacing: 6rpx;
   line-height: 72rpx;
+  min-width: 260rpx;
+  text-align: center;
 }
 
 .running-label {
@@ -123,7 +125,7 @@
   padding: 0 16rpx;
   font-size: 40rpx;
   font-weight: 800;
-  color: #0d47a1;
+  color: #756a70;
   letter-spacing: 3rpx;
   line-height: 1.4;
 }
@@ -140,16 +142,15 @@
 
 .big-btn.start {
   position: relative;
-  background: #1e88e5;
+  background: #a79aa2;
   color: #ffffff;
   border: none;
-  box-shadow: 0 12rpx 28rpx rgba(30, 136, 229, 0.28);
 }
 
 .big-btn.running {
-  background: #e3f2fd;
-  color: #0d47a1;
-  border: 3rpx solid #64b5f6;
+  background: #f7f5f6;
+  color: #756a70;
+  border: 3rpx solid #d8d0d4;
 }
 
 .preview-earn {
@@ -163,7 +164,7 @@
   display: block;
   margin-top: 16rpx;
   font-size: 24rpx;
-  color: #ef6c00;
+  color: #b5adb2;
 }
 
 .end-row {
@@ -174,9 +175,9 @@
 
 .btn-end {
   background: #ffffff;
-  color: #1976d2;
+  color: #8b8186;
   font-size: 28rpx;
-  border: 2rpx solid #90caf9;
+  border: 2rpx solid #d8d0d4;
   border-radius: 999rpx;
   padding: 16rpx 48rpx;
 }
@@ -186,15 +187,15 @@
   padding: 28rpx 32rpx 32rpx;
   background: #ffffff;
   border-radius: 24rpx;
-  border: 2rpx solid #bbdefb;
-  box-shadow: 0 8rpx 24rpx rgba(30, 136, 229, 0.06);
+  border: 2rpx solid #e6e1e4;
+  box-shadow: 0 8rpx 24rpx rgba(236, 64, 122, 0.08);
 }
 
 .stats-title {
   display: block;
   font-size: 26rpx;
   font-weight: 700;
-  color: #5c8bc9;
+  color: #b5adb2;
   margin-bottom: 20rpx;
   letter-spacing: 2rpx;
 }
@@ -202,25 +203,34 @@
 .stat-line {
   font-size: 30rpx;
   margin-bottom: 14rpx;
-  color: #1565c0;
+  color: #8b8186;
 }
 
 .divider {
   height: 2rpx;
-  background: #e3f2fd;
+  background: #f7f5f6;
   margin: 24rpx 0;
 }
 
 .last-record,
 .best {
   display: flex;
-  flex-direction: column;
-  gap: 6rpx;
+  align-items: baseline;
+  gap: 8rpx;
 }
 
 .muted {
   font-size: 26rpx;
-  color: #7896c4;
+  color: #a8a1a5;
+}
+
+.metric-label {
+  width: 140rpx;
+  text-align: right;
+}
+
+.metric-value {
+  flex: 1;
 }
 
 .footer-actions {
@@ -234,12 +244,12 @@
 .link-btn {
   flex: 1;
   background: #ffffff;
-  color: #1976d2;
+  color: #8b8186;
   font-size: 28rpx;
   font-weight: 600;
   border-radius: 999rpx;
   padding: 22rpx 24rpx;
-  border: 2rpx solid #90caf9;
+  border: 2rpx solid #d8d0d4;
   max-width: none;
 }
 

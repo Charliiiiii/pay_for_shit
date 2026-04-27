@@ -7,8 +7,8 @@
   height: calc(112rpx + env(safe-area-inset-bottom));
   padding-bottom: env(safe-area-inset-bottom);
   box-sizing: border-box;
-  background: #ffffff;
-  border-top: 2rpx solid #bbdefb;
+  background: #fbf9fa;
+  border-top: 2rpx solid #e6e1e4;
   z-index: 9999;
 }
 
@@ -22,9 +22,9 @@
 .tab-text {
   font-size: 24rpx;
   font-weight: 700;
-  color: #7896c4;
+  color: #a8a1a5;
 }
 
 .tab-bar-item--on .tab-text {
-  color: #1565c0;
+  color: #8b8186;
 }
