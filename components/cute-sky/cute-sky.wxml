@@ -1,5 +1,9 @@
 <view class="cute-sky {{compact ? 'cute-sky--compact' : ''}}">
   <view class="sky-banner-wrap">
-    <image class="sky-banner-img" src="/images/cute-sky-dog.png" mode="aspectFill" />
+    <image
+      class="sky-banner-img"
+      src="{{bannerSrc ? bannerSrc : '/images/cute-sky-dog.png'}}"
+      mode="aspectFit"
+    />
   </view>
 </view>

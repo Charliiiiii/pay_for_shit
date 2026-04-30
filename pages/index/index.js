@@ -27,6 +27,8 @@ Page({
   data: {
     isRunning: false,
     displayClock: '00:00',
+    clockHourDeg: 0,
+    clockMinuteDeg: 0,
     durationSeconds: 0,
     previewEarn: '0.00',
     summary: {
@@ -99,14 +101,19 @@ Page({
   },
 
   tick() {
-    const durationSeconds = Math.floor((Date.now() - this.sessionStart) / 1000)
+    const elapsed = Date.now() - this.sessionStart
+    const durationSeconds = Math.floor(elapsed / 1000)
     const previewEarn = calc
       .earnedMoney(durationSeconds, this.data.monthlySalary, this.data.workHoursPerDay)
       .toFixed(2)
+    const clockMinuteDeg = (elapsed / 60000) * 360
+    const clockHourDeg = clockMinuteDeg / 12
     this.setData({
       durationSeconds,
       displayClock: calc.formatClock(durationSeconds),
       previewEarn,
+      clockMinuteDeg,
+      clockHourDeg,
     })
   },
 
@@ -133,6 +140,8 @@ Page({
         isRunning: true,
         durationSeconds: 0,
         displayClock: '00:00',
+        clockHourDeg: 0,
+        clockMinuteDeg: 0,
         previewEarn: '0.00',
         poopRain: buildPoopRain(),
       })

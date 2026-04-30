@@ -1,15 +1,23 @@
 <view class="page">
-  <cute-sky />
+  <cute-sky banner-src="{{isRunning ? '/images/cute-sky-running.png' : ''}}" />
 
   <view wx:if="{{isRunning}}" class="action-area">
     <view class="timer-card pulse">
       <view class="clock-row">
-        <view class="clock-icon-wrap" aria-hidden="true">
-          <text class="clock-icon">⏱</text>
+        <view class="analog-clock" aria-hidden="true">
+          <view class="clock-face-ring"></view>
+          <view
+            class="clock-hand clock-hand-hour"
+            style="transform: rotate({{clockHourDeg}}deg);"
+          ></view>
+          <view
+            class="clock-hand clock-hand-minute"
+            style="transform: rotate({{clockMinuteDeg}}deg);"
+          ></view>
+          <view class="clock-hub"></view>
         </view>
         <text class="clock-digits">{{displayClock}}</text>
       </view>
-      <text class="running-label">正在噗噗…</text>
       <text class="preview-earn gold-text">实时收益 ¥ {{previewEarn}}</text>
       <text wx:if="{{durationSeconds >= 300}}" class="warn-tip">建议不超过 5 分钟，注意腿麻</text>
     </view>

@@ -30,6 +30,23 @@ function moneyOrHide(hide, valueStr) {
   return hide ? '***' : valueStr
 }
 
+const POSTER_HIGHLIGHT = '#F3F1EF'
+
+/** 带 #F3F1EF 底条；返回水平占位（含右侧 padding，避免与相邻字重叠） */
+function drawPosterHighlightText(ctx, x, baselineY, text, fontCss, textColor, fontSizeRpx) {
+  ctx.font = fontCss
+  const w = ctx.measureText(text).width
+  const padX = rpx(10)
+  const padY = rpx(5)
+  const boxH = fontSizeRpx + padY * 2
+  const boxY = baselineY - fontSizeRpx * 0.72
+  ctx.fillStyle = POSTER_HIGHLIGHT
+  ctx.fillRect(x - padX, boxY, w + padX * 2, boxH)
+  ctx.fillStyle = textColor
+  ctx.fillText(text, x, baselineY)
+  return w + padX
+}
+
 Page({
   data: {
     session: null
@@ -65,7 +82,7 @@ Page({
     const session = this.data.session
     if (!session) return
     wx.showActionSheet({
-      itemList: ['显示金额', '隐藏金额（保护隐私）'],
+      itemList: ['显示金额', '隐藏金额'],
       alertText: '分享图是否展示具体金额？',
       success: (res) => {
         const hideSensitive = res.tapIndex === 1
@@ -142,15 +159,12 @@ Page({
           const quoteBlockH = quoteLines.length * quoteLineH + gapM
 
           const hCelebrate = rpx(52)
-          const hHead = rpx(40)
-          const hMain = rpx(68)
+          const hSummary = hideSensitive ? rpx(56) : rpx(76)
           const hFoot = rpx(30)
           const totalH =
             hCelebrate +
             gapS +
-            hHead +
-            gapM +
-            hMain +
+            hSummary +
             gapL +
             panelH +
             gapL +
@@ -170,39 +184,82 @@ Page({
           ctx.fillText('🎉恭喜🎉', W / 2, y)
           y += hCelebrate + gapS
 
-          ctx.fillStyle = '#b5adb2'
-          ctx.font = `${rpx(30)}px sans-serif`
-          ctx.fillText('本次收益', W / 2, y)
-          y += hHead + gapM
-
-          const earnStr = hideSensitive ? '金额已隐藏' : `${session.earnedDisplay}¥`
-          const sep = '     ·     '
-          const durStr = `蹲了${session.durationText}`
           ctx.textAlign = 'left'
-          ctx.font = `900 ${rpx(46)}px sans-serif`
-          ctx.fillStyle = hideSensitive ? '#a8a1a5' : '#756a70'
-          const w1 = ctx.measureText(earnStr).width
-          ctx.font = `${rpx(28)}px sans-serif`
-          ctx.fillStyle = '#b8b3b6'
-          const w2 = ctx.measureText(sep).width
-          ctx.font = `700 ${rpx(42)}px sans-serif`
-          ctx.fillStyle = '#8b8186'
-          const w3 = ctx.measureText(durStr).width
-          const tw = w1 + w2 + w3
-          let x = W / 2 - tw / 2
-          ctx.font = `900 ${rpx(46)}px sans-serif`
-          ctx.fillStyle = hideSensitive ? '#a8a1a5' : '#756a70'
-          ctx.fillText(earnStr, x, y)
-          x += w1
-          ctx.font = `${rpx(28)}px sans-serif`
-          ctx.fillStyle = '#b8b3b6'
-          ctx.fillText(sep, x, y - rpx(4))
-          x += w2
-          ctx.font = `700 ${rpx(42)}px sans-serif`
-          ctx.fillStyle = '#8b8186'
-          ctx.fillText(durStr, x, y)
+          ctx.textBaseline = 'alphabetic'
+          const fsLabel = rpx(28)
+          const fsAmt = rpx(44)
+          const fsDur = rpx(40)
+          const durOnly = session.durationText || ''
+          const amtStr = `${session.earnedDisplay}¥`
+          const padH = rpx(10)
+          const gapSquatDur = rpx(12)
+
+          if (!hideSensitive) {
+            const pref = '本次收益 '
+            const mid = ' 蹲了'
+            ctx.font = `${fsLabel}px sans-serif`
+            const wPref = ctx.measureText(pref).width
+            ctx.font = `900 ${fsAmt}px sans-serif`
+            const wAmt = ctx.measureText(amtStr).width
+            ctx.font = `${fsLabel}px sans-serif`
+            const wMid = ctx.measureText(mid).width
+            ctx.font = `700 ${fsDur}px sans-serif`
+            const wDur = ctx.measureText(durOnly).width
+            const lineW =
+              wPref + (wAmt + padH) + wMid + gapSquatDur + (wDur + padH)
+            let lx = W / 2 - lineW / 2
+
+            ctx.fillStyle = '#b5adb2'
+            ctx.font = `${fsLabel}px sans-serif`
+            ctx.fillText(pref, lx, y)
+            lx += wPref
+            lx += drawPosterHighlightText(
+              ctx,
+              lx,
+              y,
+              amtStr,
+              `900 ${fsAmt}px sans-serif`,
+              '#756a70',
+              fsAmt
+            )
+            ctx.fillStyle = '#b5adb2'
+            ctx.font = `${fsLabel}px sans-serif`
+            ctx.fillText(mid, lx, y)
+            lx += wMid + gapSquatDur
+            drawPosterHighlightText(
+              ctx,
+              lx,
+              y,
+              durOnly,
+              `700 ${fsDur}px sans-serif`,
+              '#756a70',
+              fsDur
+            )
+          } else {
+            const pref = '蹲了'
+            ctx.font = `${fsLabel}px sans-serif`
+            const wPref = ctx.measureText(pref).width
+            ctx.font = `700 ${fsDur}px sans-serif`
+            const wDur = ctx.measureText(durOnly).width
+            const lineW = wPref + gapSquatDur + (wDur + padH)
+            let lx = W / 2 - lineW / 2
+
+            ctx.fillStyle = '#b5adb2'
+            ctx.font = `${fsLabel}px sans-serif`
+            ctx.fillText(pref, lx, y)
+            lx += wPref + gapSquatDur
+            drawPosterHighlightText(
+              ctx,
+              lx,
+              y,
+              durOnly,
+              `700 ${fsDur}px sans-serif`,
+              '#756a70',
+              fsDur
+            )
+          }
           ctx.textAlign = 'center'
-          y += rpx(20)
+          y += hSummary - rpx(8)
           const panelTop = y
           ctx.fillStyle = '#ffffff'
           ctx.fillRect(panelX, panelTop, panelW, panelH)
