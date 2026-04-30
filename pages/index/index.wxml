@@ -1,11 +1,8 @@
 <view class="page">
   <cute-sky />
-  <view class="hero">
-    <text class="title" wx:if="{{!isRunning}}">带薪噗噗计算器</text> 
-  </view>
 
-  <view class="action-area">
-    <view wx:if="{{isRunning}}" class="timer-card pulse">
+  <view wx:if="{{isRunning}}" class="action-area">
+    <view class="timer-card pulse">
       <view class="clock-row">
         <view class="clock-icon-wrap" aria-hidden="true">
           <text class="clock-icon">⏱</text>
@@ -16,7 +13,6 @@
       <text class="preview-earn gold-text">实时收益 ¥ {{previewEarn}}</text>
       <text wx:if="{{durationSeconds >= 300}}" class="warn-tip">建议不超过 5 分钟，注意腿麻</text>
     </view>
-    <button wx:else class="big-btn start" bindtap="onToggleTimer" hover-class="btn-hover">开始</button>
   </view>
 
   <view wx:if="{{isRunning}}" class="end-row">
@@ -36,10 +32,7 @@
     </view>
   </view>
 
-  <view wx:if="{{!isRunning}}" class="footer-actions">
-    <button class="link-btn" bindtap="goSettings" hover-class="btn-hover-light">设置</button>
-    <button class="link-btn" bindtap="goHistory" hover-class="btn-hover-light">记录</button>
-  </view>
+  <button wx:if="{{!isRunning}}" class="big-btn start start-after-stats" bindtap="onToggleTimer" hover-class="btn-hover">开始</button>
 
   <view wx:if="{{isRunning}}" class="poop-rain" aria-hidden="true">
     <view wx:for="{{poopRain}}" wx:key="id" class="poop-drop" style="{{item.style}}">

@@ -53,11 +53,11 @@ Page({
     this.setData({ rows, isCloud: false, showAmountInRank })
   },
 
-  onScopeAll() {
-    this.refreshList()
-  },
-
-  onScopeFriends() {
-    wx.showToast({ title: '敬请期待', icon: 'none' })
+  onAvatarError(e) {
+    const idx = Number(e.currentTarget.dataset.idx)
+    if (!Number.isFinite(idx) || idx < 0 || idx >= this.data.rows.length) return
+    this.setData({
+      [`rows[${idx}].avatarUrl`]: '',
+    })
   },
 })

@@ -1,9 +1,4 @@
 <view class="page">
-  <view class="seg">
-    <view class="seg-item seg-item--on" bindtap="onScopeAll">全部用户</view>
-    <view class="seg-item seg-item--off" bindtap="onScopeFriends">好友</view>
-  </view>
-
   <view class="list">
     <view
       wx:for="{{rows}}"
@@ -12,7 +7,7 @@
     >
       <text class="rank">{{item.rank}}</text>
       <view class="avatar-wrap">
-        <image wx:if="{{item.avatarUrl}}" class="avatar" src="{{item.avatarUrl}}" mode="aspectFill" />
+        <image wx:if="{{item.avatarUrl}}" class="avatar" src="{{item.avatarUrl}}" mode="aspectFill" data-idx="{{index}}" binderror="onAvatarError" />
         <view wx:else class="avatar-text">{{item.name.slice(0, 1)}}</view>
       </view>
       <view class="mid">
@@ -26,5 +21,5 @@
     </view>
   </view>
 
-  <view class="foot">{{isCloud ? "用户可在首页“计时 - 设置”中决定是否在排行榜显示金额" : "当前为本地演示榜；云榜加载失败时自动回退"}}</view>
+  <view class="foot">{{isCloud ? "用户可在“我的”里决定是否在排行榜显示金额" : "当前为本地演示榜；云榜加载失败时自动回退"}}</view>
 </view>

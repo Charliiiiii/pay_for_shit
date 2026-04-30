@@ -2,6 +2,14 @@ const KEY_SETTINGS = 'pp_user_settings'
 const KEY_RECORDS = 'pp_records'
 const KEY_PROFILE = 'pp_user_profile'
 
+function normalizeAvatarUrl(raw) {
+  const url = String(raw || '').trim()
+  if (!url) return ''
+  // 开发者工具临时资源地址不稳定，持久化会导致后续 500/timeout
+  if (/^https?:\/\/127\.0\.0\.1:\d+\/__tmp__\//.test(url)) return ''
+  return url
+}
+
 const defaultSettings = () => ({
   monthlySalary: 0,
   workDaysPerMonth: 21.75,
@@ -62,7 +70,7 @@ function getProfile() {
     if (raw && typeof raw === 'object') {
       return {
         nickname: String(raw.nickname || '').trim(),
-        avatarUrl: String(raw.avatarUrl || '').trim(),
+        avatarUrl: normalizeAvatarUrl(raw.avatarUrl),
       }
     }
   } catch (e) {}
@@ -72,7 +80,7 @@ function getProfile() {
 function setProfile(profile) {
   const p = {
     nickname: String(profile && profile.nickname ? profile.nickname : '').trim(),
-    avatarUrl: String(profile && profile.avatarUrl ? profile.avatarUrl : '').trim(),
+    avatarUrl: normalizeAvatarUrl(profile && profile.avatarUrl ? profile.avatarUrl : ''),
   }
   wx.setStorageSync(KEY_PROFILE, p)
   return p

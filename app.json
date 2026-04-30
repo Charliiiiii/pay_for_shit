@@ -3,6 +3,7 @@
     "pages/index/index",
     "pages/calendar/calendar",
     "pages/rank/rank",
+    "pages/mine/mine",
     "pages/result/result",
     "pages/settings/settings",
     "pages/history/history"
@@ -32,6 +33,10 @@
       {
         "pagePath": "pages/rank/rank",
         "text": "排行榜"
+      },
+      {
+        "pagePath": "pages/mine/mine",
+        "text": "我的"
       }
     ]
   },

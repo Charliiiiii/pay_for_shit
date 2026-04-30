@@ -4,7 +4,8 @@ Component({
     list: [
       { pagePath: '/pages/index/index', text: '计时' },
       { pagePath: '/pages/calendar/calendar', text: '日历' },
-      { pagePath: '/pages/rank/rank', text: '排行榜' }
+      { pagePath: '/pages/rank/rank', text: '排行榜' },
+      { pagePath: '/pages/mine/mine', text: '我的' }
     ]
   },
 

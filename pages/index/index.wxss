@@ -147,6 +147,10 @@
   border: none;
 }
 
+.start-after-stats {
+  margin-top: 24rpx;
+}
+
 .big-btn.running {
   background: #f7f5f6;
   color: #756a70;
